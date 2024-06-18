@@ -1,1 +1,13 @@
-spring.application.name=personagens
+spring:
+  application:
+    name: personagens
+
+  datasource:
+    username: root
+    password: teste@123
+    url: jdbc:mysql://localhost:3306/personagensDb
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: create
