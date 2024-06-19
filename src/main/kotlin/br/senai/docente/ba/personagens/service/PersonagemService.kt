@@ -12,7 +12,7 @@ class PersonagemService(
 
 
     fun getAll(): List<Personagem> {
-        return db.query("select * from Personagem") { response, _ ->
+        return db.query("select * from PersonagemTruncated") { response, _ ->
             Personagem(
                 id = response.getInt("id"),
                 nome = response.getString("nome"),
@@ -23,7 +23,7 @@ class PersonagemService(
     }
 
     fun findById(id: Int): List<Personagem> {
-        return db.query("select * from Personagem where id = ?", id.toString()) { response, _ ->
+        return db.query("select * from PersonagemTruncated where id = ?", id.toString()) { response, _ ->
             Personagem(
                 id = response.getInt("id"),
                 nome = response.getString("nome"),

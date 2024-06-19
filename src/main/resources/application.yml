@@ -3,11 +3,19 @@ spring:
     name: personagens
 
   datasource:
-    username: root
-    password: teste@123
+    username: aplicacao
+    password: teste1234
     url: jdbc:mysql://localhost:3306/personagensDb
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+
+  sql:
+    init:
+      mode: never

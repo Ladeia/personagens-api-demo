@@ -1,3 +1,3 @@
-package br.senai.docente.ba.personagens.entities
-
-data class PersonagemPostRequest()
+//package br.senai.docente.ba.personagens.entities
+//
+//data class PersonagemPostRequest()

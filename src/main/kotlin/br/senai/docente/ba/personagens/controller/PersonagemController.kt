@@ -24,6 +24,11 @@ class PersonagemController(
 //
 //    }
 
+    @GetMapping("/test")
+    fun test():  String{
+        return "test:ok"
+    }
+
     @GetMapping
     fun personagens():  List<Personagem>{
         return service.getAll()
