@@ -2,6 +2,7 @@ package br.senai.docente.ba.personagens.service
 
 import br.senai.docente.ba.personagens.entities.Personagem
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.query
 import org.springframework.stereotype.Service
 
 @Service
@@ -13,7 +14,18 @@ class PersonagemService(
     fun getAll(): List<Personagem> {
         return db.query("select * from Personagem") { response, _ ->
             Personagem(
-                id = response.getInt("id").toString(),
+                id = response.getInt("id"),
+                nome = response.getString("nome"),
+                raca = response.getString("raca"),
+                origem = response.getString("origem")
+            )
+        }
+    }
+
+    fun findById(id: Int): List<Personagem> {
+        return db.query("select * from Personagem where id = ?", id.toString()) { response, _ ->
+            Personagem(
+                id = response.getInt("id"),
                 nome = response.getString("nome"),
                 raca = response.getString("raca"),
                 origem = response.getString("origem")
