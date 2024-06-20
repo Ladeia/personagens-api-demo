@@ -1,6 +1,7 @@
 package br.senai.docente.ba.personagens.controller
 
 import br.senai.docente.ba.personagens.entities.Personagem
+import br.senai.docente.ba.personagens.entities.PersonagemPostRequest
 import br.senai.docente.ba.personagens.service.PersonagemService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,16 +18,24 @@ class PersonagemController(
     @Autowired val service: PersonagemService
 ) {
 
+    @GetMapping("/hello")
+    fun hello(): String{
+        return "world"
+    }
+
+    @GetMapping("/{id}")
+    fun findById(@PathVariable id: Int): List<Personagem> {
+        return service.getbyid(id)
+    }
 
 
-//    @PostMapping
-//    fun createPersonagem(@RequestBody body: PersonagemPostRequest){
-//
-//    }
-
-    @GetMapping("/test")
-    fun test():  String{
-        return "test:ok"
+    @PostMapping
+    fun createPersonagem(@RequestBody body: PersonagemPostRequest): String{
+        service.insertPersonagem(body)
+        return """"{
+            "msg":"usuario cadastrado com sucesso",
+            "status": 200
+        }"""
     }
 
     @GetMapping
